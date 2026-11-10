@@ -86,3 +86,7 @@ This pipeline was created and built with **Snowflake Cortex Code (CoCo)**, Snowf
 - **Faster development**: you go from an idea to a working pipeline in minutes.
 - **Consistent and reviewable**: every change goes through Git branches (`dev` → `qa` → `prod`).
 - **Built-in Snowflake knowledge**: the assistant follows Snowflake best practices.
+
+## Status
+
+**Task completed**: The pipeline README was created and updated with the Snowflake Cortex AI assistant using prompts, and pushed to the GitHub `dev` branch.
