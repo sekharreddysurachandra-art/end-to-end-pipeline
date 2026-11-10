@@ -59,6 +59,30 @@ python -m pipeline validate
 
 Check the target tables in Snowflake once the run completes.
 
-## Test
+## Creating and Building the Pipeline Using the Snowflake Cortex AI Assistant (Prompts, Not Typing)
 
-This line was added by Cortex on the dev branch.
+This pipeline was created and built with **Snowflake Cortex Code (CoCo)**, Snowflake's AI coding assistant. Instead of hand-typing SQL, Python, and Git commands, each step was done by giving the assistant a natural-language prompt. The assistant then generated the code, ran the commands, and pushed the changes.
+
+### How it works
+
+1. Open Cortex Code in the project directory: `cortex`
+2. Describe what you want in plain English.
+3. Review what the assistant proposes and approve it. The assistant writes the files, runs SQL against Snowflake, and runs the Git commands.
+
+### Example prompts
+
+| Step | Prompt |
+| --- | --- |
+| Project setup | "Create a README describing the end-to-end pipeline, setup, and usage" |
+| Ingest | "Create a stage and load the raw CSV files into a staging table in Snowflake" |
+| Transform | "Build cleaned, analytics-ready tables from the staging data" |
+| Validate | "Add data quality checks for nulls, duplicates, and freshness" |
+| Schedule | "Schedule the pipeline to run daily with a Snowflake task" |
+| Version control | "Commit the changes and push to the GitHub dev branch" |
+
+### Benefits
+
+- **No manual typing of code**: SQL, Python, and Git commands are generated from prompts.
+- **Faster development**: you go from an idea to a working pipeline in minutes.
+- **Consistent and reviewable**: every change goes through Git branches (`dev` → `qa` → `prod`).
+- **Built-in Snowflake knowledge**: the assistant follows Snowflake best practices.
