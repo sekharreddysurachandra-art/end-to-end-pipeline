@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------
+# schemachange config - DEV environment (database SALES_DEV)
+# Run from repo root:
+#   schemachange deploy --config-folder schemachange/config \
+#                       --config-file-name schemachange-config-dev.yml
+# Credentials come from your local ~/.snowflake/connections.toml
+# (connection-name below). NEVER commit connection or secret files.
+# ---------------------------------------------------------------------
+config-version: 1
+
+root-folder: schemachange/migrations
+modules-folder: null
+
+connection-name: PD77583
+snowflake-role: SYSADMIN
+snowflake-warehouse: COMPUTE_WH
+
+# One change-history table per environment (governance is shared, so a
+# single table would make QA/PROD skip scripts already applied in DEV).
+change-history-table: GOVERNANCE.SCHEMACHANGE.CHANGE_HISTORY_DEV
+create-change-history-table: true
+
+# Jinja variables available in every script as {{ var_name }}
+vars:
+  environment: DEV
+  database_name: SALES_DEV
+  cost_center: SALES_ANALYTICS
+
+autocommit: false
+dry-run: false

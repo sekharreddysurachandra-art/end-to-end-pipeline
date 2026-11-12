@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------------
+# schemachange config - QA environment (database SALES_QA)
+# Run from repo root:
+#   schemachange deploy --config-folder schemachange/config \
+#                       --config-file-name schemachange-config-qa.yml
+# Credentials come from your local ~/.snowflake/connections.toml
+# (connection-name below). NEVER commit connection or secret files.
+# ---------------------------------------------------------------------
+config-version: 1
+
+root-folder: schemachange/migrations
+modules-folder: null
+
+connection-name: PD77583
+snowflake-role: SYSADMIN
+snowflake-warehouse: COMPUTE_WH
+
+# Separate change-history table so QA tracks its own deployments
+change-history-table: GOVERNANCE.SCHEMACHANGE.CHANGE_HISTORY_QA
+create-change-history-table: true
+
+vars:
+  environment: QA
+  database_name: SALES_QA
+  cost_center: SALES_ANALYTICS
+
+autocommit: false
+dry-run: false

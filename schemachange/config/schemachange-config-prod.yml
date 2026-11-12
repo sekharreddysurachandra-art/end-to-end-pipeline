@@ -1,0 +1,29 @@
+# ---------------------------------------------------------------------
+# schemachange config - PROD environment (database SALES_PROD)
+# Run from repo root:
+#   schemachange deploy --config-folder schemachange/config \
+#                       --config-file-name schemachange-config-prod.yml
+# Credentials come from your local ~/.snowflake/connections.toml
+# (connection-name below). NEVER commit connection or secret files.
+# ---------------------------------------------------------------------
+config-version: 1
+
+root-folder: schemachange/migrations
+modules-folder: null
+
+connection-name: PD77583
+snowflake-role: SYSADMIN
+snowflake-warehouse: COMPUTE_WH
+
+# Separate change-history table so PROD tracks its own deployments
+change-history-table: GOVERNANCE.SCHEMACHANGE.CHANGE_HISTORY_PROD
+create-change-history-table: true
+
+# PROD => database and schemas are created PERMANENT (not transient)
+vars:
+  environment: PROD
+  database_name: SALES_PROD
+  cost_center: SALES_ANALYTICS
+
+autocommit: false
+dry-run: false
